@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import json
 import requests
 import re
@@ -77,8 +77,8 @@ def butler_messages():
     return "200"
 
 @app.route("/modal")
-def lol():
-    return "ghanta"
+def modal():
+    return render_template("modal.html")
 
 @app.route("/yes")
 def yes():

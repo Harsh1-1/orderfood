@@ -1,0 +1,22 @@
+.btn-container {
+    display: flex;
+}
+
+.img-container {
+    padding: 10px;
+}
+
+.image {
+    width: 100%;
+    border-radius: 4px;
+    min-width: 550px;
+    max-width: 700px;
+}
+
+.btn {
+    flex-grow: 3;
+    font-size: 5rem;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 4px;
+}
