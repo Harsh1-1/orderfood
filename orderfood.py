@@ -76,6 +76,20 @@ def butler_messages():
         f2.write(json.dumps(content))
     return "200"
 
+@app.route("/modal")
+def lol():
+    return "ghanta"
+
+@app.route("/yes")
+def yes():
+    r = requests.get("https://api.flock.co/v1/chat.sendMessage?to=u:olhoyhclihiyyhhy&text=" + "Awesome Akshay" + "&token=b9c7b452-1145-4797-87cb-c92991fb6732")
+    return "awesome"
+
+@app.route("/no")
+def no():
+    r = requests.get("https://api.flock.co/v1/chat.sendMessage?to=u:olhoyhclihiyyhhy&text=" + "Awesome Harsh" + "&token=b9c7b452-1145-4797-87cb-c92991fb6732")
+    return "awesome"
+
 @app.route("/slashcommand", methods=['GET', 'POST'])
 def food():
     if request.method == 'GET':
