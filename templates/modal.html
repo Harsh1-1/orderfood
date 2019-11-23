@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="modal.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename=modal.css) }}">
     <title>Minder mash</title>
 </head>
 <body>
@@ -19,6 +19,6 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="modal.js" type="application/javascript"></script>
+    <script src="{{ url_for('static', filename=modal.js) }}" type="application/javascript"></script>
 </body>
 </html>
