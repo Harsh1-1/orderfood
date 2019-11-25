@@ -28,6 +28,6 @@ def random_image():
     db_meta = mysql.load_db_meta_data()
     mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
     query = "SELECT * FROM user_details ORDER BY RAND() LIMIT 1;"
-    data = mysql.getdata(query)
+    data = mysql.getData(mydb, query)
     mydb.close()
-    return jsonify(firstName=data[0], lastName=data[1], imageURL=data[2])
+    return jsonify(firstName=data[0][1], lastName=data[0][2], imageURL=data[0][3])

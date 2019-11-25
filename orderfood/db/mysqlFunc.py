@@ -30,5 +30,9 @@ class MySQL():
         f.close()
         return db_meta
 
-    # def get_random_user_details():
-    #     query = "SELECT * FROM table_name ORDER BY RAND() LIMIT 1"
+    def getData(self, mydb, query):
+        mycursor = mydb.cursor()
+        mycursor.execute(query)
+        data = mycursor.fetchall()
+        mycursor.close()
+        return data
