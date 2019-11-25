@@ -47,6 +47,7 @@ function callModalActionApi(path) {
     return $.get('/minder/' + path);
 }
 
+// TODO: pass user details
 function getNextUser() {
     return $.get('/minder/randomUser');
 }
