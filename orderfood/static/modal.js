@@ -9,11 +9,10 @@ function handleBtnClick(actionPath) {
 
   callModalActionApi(actionPath)
     .then(function(resp) {
-      console.log(resp);
-      return getNextImage();
+      return getNextUser();
     })
-    .then(function(imageData) {
-      // TODO: set new image in card
+    .then(function(userDetails) {
+      setUserDataInView(userDetails);
     })
     .catch(function(err) {
       console.log('Some error occurred', err);
@@ -22,6 +21,12 @@ function handleBtnClick(actionPath) {
       toggleLoaderInBtn('#' + actionPath, false);
       setBtnsDisable(false);
     });
+}
+
+function setUserDataInView(userDetails) {
+  const userName = `${userDetails.firstName} ${userDetails.lastName}`
+  $("#profile-title").text(userName);
+  $("#profile-image").css('background-image', `url(${userDetails.imageURL})`);
 }
 
 function setBtnsDisable(isDisabled) {
@@ -42,7 +47,6 @@ function callModalActionApi(path) {
     return $.get('/minder/' + path);
 }
 
-function getNextImage() {
-    // TODO: add api url for get image
-    return $.get('/');
+function getNextUser() {
+    return $.get('/minder/randomUser');
 }
