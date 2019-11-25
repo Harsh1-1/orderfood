@@ -14,19 +14,22 @@
 </head>
 <body>
     <div class"content">
-        <div class="row text-center">
-            <h1 class="title">My First Page</h1>
-            <h6 class="light subtitle">A webpage powered by <b>Cirrus</b></p>
-        </div>
-    </div>
-    <div class="page-container">
-        <div class="img-container">
-            <img class="image" src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201904/1534100238-Deepika-final1_0.jpeg?6xIlBTJCQvGXgt6yjQ6sDypoATGeEbwc">
-        </div>
-        <div class="btn-container">
-            <button class="btn" id="yes">Yes</button>
-            <button class="btn" id="no">No</button>
-        </div>
+        <div class="row">
+          <div class="col-7 offset-center">
+            <div class="card">
+                <div class="card-container">
+                    <div class="card-image" style="background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201904/1534100238-Deepika-final1_0.jpeg?6xIlBTJCQvGXgt6yjQ6sDypoATGeEbwc)"></div>
+                    <div class="title-container">
+                        <p class="title">Deepika Padukone</p><span class="subtitle">Actress</span>
+                    </div>
+                </div>
+                <div class="action-bar u-center">
+                  <button class="btn btn-xlarge btn-success" id="yes">Yes</button>
+                  <button class="btn btn-xlarge btn-danger" id="no">No</button>
+                </div>
+            </div>
+          </div>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='modal.js') }}" type="application/javascript"></script>
