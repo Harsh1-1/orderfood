@@ -21,7 +21,7 @@ class MySQL():
         """
         This loads mysql data from json file
         """
-        f = open('db_details.json','r')
+        f = open('/home/harsh.s/orderfood/orderfood/db/db_details.json','r')
         try:
             db_meta = json.load(f)
         except Exception as e:
