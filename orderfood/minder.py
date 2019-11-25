@@ -1,5 +1,5 @@
 import functools
-from db import MySQL
+from .db import MySQL
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
@@ -27,8 +27,7 @@ def random_image():
     mysql = MySQL()
     db_meta = mysql.load_db_meta_data()
     mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
-    query = "SELECT * FROM user_details ORDER BY RAND() LIMIT 1;" 
+    query = "SELECT * FROM user_details ORDER BY RAND() LIMIT 1;"
     data = mysql.getdata(query)
     mydb.close()
     return jsonify(firstName=data[0], lastName=data[1], imageURL=data[2])
-    

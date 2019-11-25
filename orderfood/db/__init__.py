@@ -1,1 +1,1 @@
-from mysqlFunc import MySQL
+from .mysqlFunc import MySQL
