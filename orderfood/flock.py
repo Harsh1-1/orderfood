@@ -52,7 +52,7 @@ def events():
         return "user successfully installed this app"
 
     if content["name"] == "app.uninstall":
-        del_query = "DELETE FROM app_users where user_id = '" + str(content['userId'] + "';")
+        del_query = "DELETE FROM app_users where user_id = '" + str(content['userId']) + "';"
         mysql = MySQL()
         db_meta = mysql.load_db_meta()
         mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
