@@ -43,7 +43,7 @@ def events():
 
     #TODO For all these database opertions ideally we should create Model package, Curiosity to finish this app quickly forcing me to do it... feeling excited and bad at the same time
     if content["name"] == "app.install":
-        insert_query = "INSERT INTO app_users (user_id, token, is_valid) VALUES (" +  str(content['userId']) + ", " + str(content['userToken']) + ",1 ) "
+        insert_query = "INSERT INTO app_users (user_id, token, is_valid, created_at, updated_at) VALUES (" +  str(content['userId']) + ", " + str(content['userToken']) + ",1, NOW(), NOW()) "
         mysql = MySQL()
         db_meta = mysql.load_db_meta()
         mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
