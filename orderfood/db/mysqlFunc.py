@@ -30,9 +30,22 @@ class MySQL():
         f.close()
         return db_meta
 
+    #TODO This function should be modified to strictly use Select query, It is preferrable to use an ORM 
     def getData(self, mydb, query):
+        """
+        This functions just get the data from db, should be used only for select query
+        """
         mycursor = mydb.cursor()
         mycursor.execute(query)
         data = mycursor.fetchall()
         mycursor.close()
         return data
+
+    #TODO seperate all the three operations, better to use and their verification, use an ORM 
+    def cudOperations(self, mydb, query):
+        """
+        This function will be used to insert data into db
+        """
+        mycursor = mydb.cursor()
+        mycursor.execute(query)
+        mycursor.close()

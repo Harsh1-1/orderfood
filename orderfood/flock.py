@@ -7,6 +7,7 @@ import json
 import requests
 import re
 from porter2stemmer import Porter2Stemmer
+from .db import MySQL
 
 bp = Blueprint('flock', __name__, url_prefix='/')
 
@@ -39,25 +40,39 @@ def events():
     data = json.dumps(content)
     with open("./logs",'a+') as f:
         f.write(data)
-    if content["name"] == "client.slashCommand":
-        if content["command"] == "orderfood":
-            menu_str = ""
-            with open("butler_logs") as fbutler:
-                menu_str = prepare_menu(json.load(fbutler)["text"])
-            r = send_message(menu_str)
-            return jsonify(text=menu_str)
+
+    #TODO For all these database opertions ideally we should create Model package, Curiosity to finish this app quickly forcing me to do it... feeling excited and bad at the same time
+    if content["name"] == "app.install":
+        insert_query = "INSERT INTO app_users (user_id, token, is_valid) VALUES (" +  str(content['userId']) + ", " + str(content['userToken']) + ",1 ) "
+        mysql = MySQL()
+        db_meta = mysql.load_db_meta()
+        mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
+        mysql.cudOperations(mydb, insert_query)
+        mydb.close()
+        return "user successfully installed this app"
+
+    if content["name"] == "app.uninstall":
+        del_query = "DELETE FROM app_users where user_id = " + str(content['userId'])
+        mysql = MySQL()
+        db_meta = mysql.load_db_meta()
+        mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
+        mysql.cudOperations(mydb, del_query)
+        mydb.close()
+        return "user uninstalled app, all his data got deleted"
 
 
-    #requests.get("https://api.flock.co/v1/chat.sendMessage?to=someuser&text=Thanks&token=sometoken")
-    #r = send_message()
+
+    #Todo This is code for orderfood app to get menu, it will be used in some other app
+    # if content["name"] == "client.slashCommand":
+    #     if content["command"] == "orderfood":
+            # menu_str = ""
+            # with open("butler_logs") as fbutler:
+            #     menu_str = prepare_menu(json.load(fbutler)["text"])
+            # r = send_message(menu_str)
+            # return jsonify(text=menu_str)
+
     return "yay"
     #return jsonify(text=str(r))
-
-# This function is used to send a message to a person
-#TODO I need to pass an id to send message to a person
-def send_message(message):
-    r = requests.get("https://api.flock.co/v1/chat.sendMessage?to=someuser&text=" + message + "&token=sometoken")
-    return r.status_code
 
 # This will prepare menu in string format for us
 def prepare_menu(posted_menu):
