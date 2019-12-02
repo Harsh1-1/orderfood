@@ -10,6 +10,21 @@ bp = Blueprint('minder', __name__, url_prefix='/minder')
 
 @bp.route("/modal")
 def modal():
+
+    # Logging data to check what is posted to api
+    content = request.json
+    data = json.dumps(content)
+    with open("./logs",'a+') as f:
+        f.write(data)
+
+    mysql = MySQL()
+    db_meta = mysql.load_db_meta()
+    mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
+    query = "SELECT interest FROM app_users;"
+    data = mysql.getData(mydb, query)
+    mydb.close()
+    if data[0][0] is None: 
+        return "Baby please enter your interest"
     return render_template("modal.html")
 
 @bp.route("/yes")
