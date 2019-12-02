@@ -1,6 +1,38 @@
-<html>
-	<body>
-		<p> Baby Please enter your interest nah </p>
-	</body>
+{% extends 'base.html' %}
 
-</html>
+{% block content %}
+    <div class"content">
+        <div class="row">
+          <div class="col-5 offset-center">
+            <div class="card">
+                <div class="card-head">
+                    <p class="card-head-title">Hi, Select your Interest</p>
+                </div>
+                <div class="content u-center">
+                  <div class="col-6 u-center ignore-screen">
+                    <label class="interest-label">
+                      <input type="radio" name="interest" value="M" checked>
+                      <figure class="avatar avatar--xlarge interest-fig">
+                          <img src="https://image.flaticon.com/icons/svg/145/145848.svg" />
+                      </figure>
+                      Male
+                    </label>
+                  </div>
+                  <div class="col-6 u-center ignore-screen">
+                    <label class="interest-label">
+                      <input type="radio" name="interest" value="F">
+                      <figure class="avatar avatar--xlarge interest-fig">
+                          <img src="https://image.flaticon.com/icons/svg/145/145847.svg" />
+                      </figure>
+                      Female
+                    </label>
+                  </div>
+                </div>
+                <div class="action-bar u-center">
+                    <button class="animated btn-info">Save</button>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
