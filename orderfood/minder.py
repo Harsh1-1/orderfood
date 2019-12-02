@@ -1,23 +1,22 @@
 import functools
+import requests
+import json
+import jwt
+
 from .db import MySQL
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
 )
-import requests
-import json
 
 bp = Blueprint('minder', __name__, url_prefix='/minder')
 
 @bp.route("/modal")
 def modal():
 
-    # Logging data to check what is posted to api
-    content = request.args.get('flockEventToken')
-    data = json.dumps(content)
-    with open("./logs",'a+') as f:
-        f.write(data)
-
+    flockEventToken = request.args.get('flockEventToken')
+    decodedToken = jwt.decode(flockEventToken, verify=False)
+    userId = decodedToken['userId']
     mysql = MySQL()
     db_meta = mysql.load_db_meta()
     mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
@@ -25,8 +24,8 @@ def modal():
     data = mysql.getData(mydb, query)
     mydb.close()
     if data[0][0] is None: 
-        return "Baby please enter your interest"
-    return render_template("modal.html")
+        return render_template("interest.html", userId=userId)
+    return render_template("modal.html",userId = userId)
 
 @bp.route("/yes")
 def yes():
