@@ -13,7 +13,7 @@ bp = Blueprint('minder', __name__, url_prefix='/minder')
 def modal():
 
     # Logging data to check what is posted to api
-    content = request.json
+    content = request.args.get('flockEventToken')
     data = json.dumps(content)
     with open("./logs",'a+') as f:
         f.write(data)
