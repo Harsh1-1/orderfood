@@ -5,15 +5,10 @@
 
 .interest-fig {
   margin-bottom: 8px;
+  background-color: white;
 }
 
 .interest-label {
   cursor: pointer;
   text-align: center;
-}
-
-input[name=interest] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }

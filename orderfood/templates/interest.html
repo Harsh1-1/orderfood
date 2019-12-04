@@ -11,7 +11,7 @@
                 <div class="content u-center">
                   <div class="col-6 u-center ignore-screen">
                     <label class="interest-label">
-                      <input type="radio" name="interest" value="M" checked>
+                      <input class="" type="radio" name="interest" value="M" checked>
                       <figure class="avatar avatar--xlarge interest-fig">
                           <img src="https://image.flaticon.com/icons/svg/145/145848.svg" />
                       </figure>
@@ -20,7 +20,7 @@
                   </div>
                   <div class="col-6 u-center ignore-screen">
                     <label class="interest-label">
-                      <input type="radio" name="interest" value="F">
+                      <input class="" type="radio" name="interest" value="F">
                       <figure class="avatar avatar--xlarge interest-fig">
                           <img src="https://image.flaticon.com/icons/svg/145/145847.svg" />
                       </figure>
@@ -29,10 +29,13 @@
                   </div>
                 </div>
                 <div class="action-bar u-center">
-                    <button class="animated btn-info">Save</button>
+                    <button class="btn btn-animated btn-info" id="save-interest-btn">Save</button>
                 </div>
             </div>
           </div>
         </div>
     </div>
+    <script type="text/javascript">
+      var userId = {{ userId }};
+    </script>
 {% endblock %}

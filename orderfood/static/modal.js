@@ -1,7 +1,26 @@
 $(document).ready(function() {
     $('#yes').click(() => handleBtnClick('yes'));
     $('#no').click(() => handleBtnClick('no'));
+    $('#save-interest-btn').click(() => saveInterest({
+      userId: userId, interest: $('input[name="interest"]:checked').val()
+    }));
 });
+
+function saveInterest(data) {
+  $('#save-interest-btn').prop('disabled', true);
+  toggleLoaderInBtn('#save-interest-btn', true);
+  $.ajax({
+    type: "POST",
+    url: '/user/interest',
+    data: data,
+    success: function(resp) {
+      window.location.reload(true);
+    },
+    error: function(err) {
+      console.log('Some error occurred', err);
+    }
+  });
+}
 
 function handleBtnClick(actionPath) {
   toggleLoaderInBtn('#' + actionPath, true);
@@ -30,7 +49,7 @@ function setUserDataInView(userDetails) {
 }
 
 function setBtnsDisable(isDisabled) {
-  $("#action-btns").find(".btn").attr('disabled', isDisabled);
+  $("#action-btns").find(".btn").prop('disabled', isDisabled);
 }
 
 function toggleLoaderInBtn(btnSelector, showLoader) {
