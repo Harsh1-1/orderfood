@@ -6,17 +6,20 @@
           <div class="col-7 offset-center">
             <div class="card" id="profile-card">
                 <div class="card-container">
-                    <div class="card-image" id="profile-image" style="background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201904/1534100238-Deepika-final1_0.jpeg?6xIlBTJCQvGXgt6yjQ6sDypoATGeEbwc)"></div>
+                    <div class="card-image" id="profile-image"></div>
                     <div class="title-container">
-                        <p class="title" id="profile-title">Deepika Padukone</p>
+                        <p class="title" id="profile-title"></p>
                     </div>
                 </div>
                 <div class="action-bar u-center" id="action-btns">
-                  <button class="btn btn-xlarge btn-success btn-animated" id="yes">Yes</button>
-                  <button class="btn btn-xlarge btn-danger btn-animated" id="no">No</button>
+                  <button class="btn btn-xlarge btn-success btn-animated" id="yes" disabled>Yes</button>
+                  <button class="btn btn-xlarge btn-danger btn-animated" id="no" disabled>No</button>
                 </div>
             </div>
           </div>
       </div>
     </div>
+    <script type="text/javascript">
+      var userId = {{ userId }};
+    </script>
 {% endblock %}

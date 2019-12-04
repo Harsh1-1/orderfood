@@ -1,10 +1,20 @@
+let currentUserProfile;
+
 $(document).ready(function() {
+    onInit();
     $('#yes').click(() => handleBtnClick('yes'));
     $('#no').click(() => handleBtnClick('no'));
     $('#save-interest-btn').click(() => saveInterest({
       userId: userId, interest: $('input[name="interest"]:checked').val()
     }));
 });
+
+function onInit() {
+  showNextUserDetails()
+    .always(function() {
+      setBtnsDisable(false);
+    });
+}
 
 function saveInterest(data) {
   $('#save-interest-btn').prop('disabled', true);
@@ -14,6 +24,7 @@ function saveInterest(data) {
     url: '/user/interest',
     data: data,
     success: function(resp) {
+      // reloading page on success to show modal page
       window.location.reload(true);
     },
     error: function(err) {
@@ -26,12 +37,9 @@ function handleBtnClick(actionPath) {
   toggleLoaderInBtn('#' + actionPath, true);
   setBtnsDisable(true);
 
-  callModalActionApi(actionPath)
+  callModalActionApi(actionPath, currentUserProfile)
     .then(function(resp) {
-      return getNextUser();
-    })
-    .then(function(userDetails) {
-      setUserDataInView(userDetails);
+      return showNextUserDetails();
     })
     .catch(function(err) {
       console.log('Some error occurred', err);
@@ -39,6 +47,14 @@ function handleBtnClick(actionPath) {
     .always(function() {
       toggleLoaderInBtn('#' + actionPath, false);
       setBtnsDisable(false);
+    });
+}
+
+function showNextUserDetails() {
+  return getNextUser()
+    .then(function(userDetails) {
+      currentUserProfile = userDetails;
+      setUserDataInView(userDetails);
     });
 }
 
@@ -62,11 +78,10 @@ function toggleLoaderInBtn(btnSelector, showLoader) {
   }
 }
 
-function callModalActionApi(path) {
-    return $.get('/minder/' + path);
+function callModalActionApi(path, userDetails) {
+    return $.get(`/minder/${path}?appUserId=${userId}&userId=${userDetails.userId}`);
 }
 
-// TODO: pass user details
 function getNextUser() {
-    return $.get('/minder/randomUser');
+    return $.get(`/minder/randomUser?userId=${userId}`);
 }
