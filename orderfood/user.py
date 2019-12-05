@@ -12,10 +12,10 @@ def interest():
     interest = request.args.get('interest')
 
     update_query = "UPDATE app_users SET interest = '" + str(interest) + "' where user_id = '" + str(userId) + "';"
-        mysql = MySQL()
-        db_meta = mysql.load_db_meta()
-        mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
-        mysql.cudOperations(mydb, update_query)
-        mydb.close()
+    mysql = MySQL()
+    db_meta = mysql.load_db_meta()
+    mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
+    mysql.cudOperations(mydb, update_query)
+    mydb.close()
 
     return "200"
