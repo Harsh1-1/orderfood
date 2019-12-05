@@ -6,7 +6,7 @@ from .db import MySQL
 
 bp = Blueprint('user', __name__, url_prefix='/user')
 
-@bp.route("/interest", methods=['POST'])
+@bp.route("/interest", methods=['GET','POST'])
 def interest():
     userId = request.args.get('userId')
     interest = request.args.get('interest')
