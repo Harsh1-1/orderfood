@@ -78,6 +78,7 @@ function toggleLoaderInBtn(btnSelector, showLoader) {
   }
 }
 
+//TODO please change these methods to post
 function callModalActionApi(path, userDetails) {
     return $.get(`/minder/${path}?appUserId=${userId}&userId=${userDetails.userId}`);
 }
