@@ -23,7 +23,7 @@ def modal():
     query = "SELECT interest FROM app_users;"
     data = mysql.getData(mydb, query)
     mydb.close()
-    if data[0][0] is None: 
+    if data[0][0] is None:
         return render_template("interest.html", userId=userId)
     return render_template("modal.html",userId = userId)
 

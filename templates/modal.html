@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='modal.css') }}">
+{% endblock %}
+
 {% block content %}
     <div class"content">
         <div class="row">
@@ -19,7 +23,11 @@
           </div>
       </div>
     </div>
-    <script type="text/javascript">
-      var userId = {{ userId }};
-    </script>
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript">
+    var userId = {{ userId }};
+  </script>
+  <script src="{{ url_for('static', filename='modal.js') }}" type="application/javascript"></script>
 {% endblock %}

@@ -1,0 +1,69 @@
+.welcome-header {
+  padding: 1rem 3rem;
+}
+
+.padtop {
+  padding-top: 5.25rem;
+}
+
+.title-section {
+  height: 500px;
+  background-color: #FDAD68;
+  background-image: linear-gradient(-20deg, #FDAD68 0%, #FD57B3 75%);
+  color: white;
+}
+
+.welcome-title {
+  height: 100%;
+}
+
+.gradient-text {
+  background: linear-gradient(-20deg, #FDAD68 0%, #FD57B3 75%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-header .gradient-text {
+  font-weight: 900;
+}
+
+.gradient-text:hover {
+  backface-visibility: visible;
+}
+
+.action-steps {
+  width: 55%;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.step-fig {
+  background-color: white;
+  margin-bottom: 10px;
+  border-radius: 0;
+}
+
+.action-title {
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+}
+
+.action-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.app-icon {
+  font-size: 21px;
+  margin-right: 2px;
+}
+
+@media screen and (max-width: 768px)  {
+  .action-col {
+    padding: 1rem 0 !important;
+  }
+
+  .welcome-header {
+    padding: 0.5rem 2rem;
+  }
+}

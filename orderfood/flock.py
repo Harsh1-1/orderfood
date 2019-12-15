@@ -13,7 +13,7 @@ bp = Blueprint('flock', __name__, url_prefix='/')
 
 @bp.route("/install", methods=['GET', 'POST'])
 def install():
-    return "yay you have installed food app"
+    return render_template("welcome.html")
 
 @bp.route("/flockhook", methods=['GET', 'POST'])
 def butler_messages():

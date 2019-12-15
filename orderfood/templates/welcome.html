@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='welcome.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="welcome-header header header-fixed u-unselectable header-animated">
+      <div class="header-brand">
+          <div class="nav-item no-hover">
+            <a>
+              <span class="icon app-icon">
+                  <i class="fas fa-wrapper fa-heart gradient-text"></i>
+              </span>
+              <h6 class="title">MinderMash</h6>
+            </a>
+          </div>
+          <div class="nav-item nav-btn" id="header-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+      </div>
+      <div class="header-nav" id="header-menu">
+          <div class="nav-right">
+            <div class="nav-item active">
+                <a href="#" class="gradient-text">Home</a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="gradient-text">About us</a>
+            </div>
+          </div>
+      </div>
+  </div>
+  <section class="padtop title-section">
+    <div class="content welcome-title u-center u-text-center">
+      <h1>Welcome to Minder mash</h1>
+    </div>
+  </section>
+  <section>
+    <div class="action-steps content u-center u-text-center">
+      <h4 class="gradient-text">Step to find your Soul Mate</h4>
+      <p class="u-text-center">It's extremely simple to find your future lover with this user friendly step we've laid out for you</p>
+      <div class="row">
+        <div class="action-col col-4 u-center u-flex-column h-100">
+          <figure class="avatar avatar--xlarge step-fig">
+              <img src="https://image0.flaticon.com/icons/png/128/2258/2258782.png" />
+          </figure>
+          <span class="action-title">Enter command</span>
+          <span class="u-text-center action-desc">Type <code>/mindermash</code> in flock app and press Enter</span>
+        </div>
+        <div class="action-col col-4 u-center u-flex-column h-100">
+          <figure class="avatar avatar--xlarge step-fig">
+              <img src="https://image.flaticon.com/icons/png/128/143/143555.png" />
+          </figure>
+          <span class="action-title">Select interest</span>
+          <span class="u-text-center action-desc">Select your interest and find matches</span>
+        </div>
+        <div class="action-col col-4 u-center u-flex-column h-100">
+          <figure class="avatar avatar--xlarge step-fig">
+              <img src="https://image.flaticon.com/icons/png/128/1306/1306599.png" />
+          </figure>
+          <span class="action-title">Start Dating</span>
+          <span class="u-text-center action-desc">Yeah it's as simple "Start Dating"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='welcome.js') }}" type="application/javascript"></script>
+{% endblock %}
