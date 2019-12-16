@@ -1,9 +1,15 @@
 let currentUserProfile;
 
 $(document).ready(function() {
-    $('#save-interest-btn').click(() => saveInterest({
-      userId: userId, interest: $('input[name="interest"]:checked').val()
-    }));
+    $('#save-interest-btn').click(() => {
+      alert('Clicked');
+      const data = {
+        userId: userId,
+        interest: $('input[name="interest"]:checked').val()
+      };
+      alert(JSON.stringify(data));
+      saveInterest(data);
+    });
     $('#yes').click(() => handleBtnClick('yes'));
     $('#no').click(() => handleBtnClick('no'));
 });
