@@ -20,7 +20,7 @@ def modal():
     mysql = MySQL()
     db_meta = mysql.load_db_meta()
     mydb = mysql.create_mysql_db_object(db_meta['host'],db_meta['username'], db_meta['password'], db_meta['port'], db_meta['db'])
-    query = "SELECT interest FROM app_users;"
+    query = "SELECT interest FROM app_users where user_id='" + str(userId) + "';"
     data = mysql.getData(mydb, query)
     mydb.close()
     if data[0][0] is None:
