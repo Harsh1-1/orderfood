@@ -4,7 +4,6 @@ $(document).ready(function() {
     $('#save-interest-btn').click(() => saveInterest({
       userId: userId, interest: $('input[name="interest"]:checked').val()
     }));
-    onInit();
     $('#yes').click(() => handleBtnClick('yes'));
     $('#no').click(() => handleBtnClick('no'));
 });
