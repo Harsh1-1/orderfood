@@ -9,8 +9,8 @@ bp = Blueprint('user', __name__, url_prefix='/user')
 @bp.route("/interest", methods=['GET','POST'])
 def interest():
     if request.method == 'POST':
-        userId = request.json['userId']
-        interest = request.json['interest']
+        userId = request.form.get('userId')
+        interest = request.form.get('interest')
 
         update_query = "UPDATE app_users SET interest = '" + str(interest) + "' where user_id = '" + str(userId) + "';"
         mysql = MySQL()
