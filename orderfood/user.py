@@ -12,8 +12,8 @@ def interest():
         userId = request.form.get('userId')
         interest = request.form.get('interest')
         with open("./logs",'a+') as f:
-            f.write(interest)
-            f.write(userId)
+            f.write(str(interest))
+            f.write(str(userId))
         update_query = "UPDATE app_users SET interest = '" + str(interest) + "' where user_id = '" + str(userId) + "';"
         mysql = MySQL()
         db_meta = mysql.load_db_meta()
