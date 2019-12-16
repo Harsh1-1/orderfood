@@ -27,7 +27,9 @@ function saveInterest(data) {
   $.ajax({
     type: "POST",
     url: '/user/interest',
-    data: data,
+    contentType: "application/json;charset=utf-8",
+    data: JSON.stringify({data}),
+    dataType: "json",
     success: function(resp) {
       // reloading page on success to show modal page
       window.location.reload(true);
