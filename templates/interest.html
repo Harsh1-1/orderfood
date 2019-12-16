@@ -17,7 +17,7 @@
                     <label class="interest-label">
                       <input class="" type="radio" name="interest" value="M" checked>
                       <figure class="avatar avatar--xlarge interest-fig">
-			      <!-- <img src="https://image.flaticon.com/icons/svg/145/145848.svg" /> -->
+			      <!--  <img src="https://image.flaticon.com/icons/svg/145/145848.svg" /> -->
 			      <img src="https://media.tenor.com/images/a2b2a46aef7e20955412b15ffff1a9ce/tenor.gif" />
                       </figure>
                       Male
@@ -45,7 +45,7 @@
 
 {% block scripts %}
   <script type="text/javascript">
-    var userId = {{ userId }};
+    var userId = '{{ userId }}';
   </script>
   <script src="{{ url_for('static', filename='modal.js') }}" type="application/javascript"></script>
 {% endblock %}
