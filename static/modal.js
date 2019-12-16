@@ -7,7 +7,6 @@ $(document).ready(function() {
     onInit();
     $('#yes').click(() => handleBtnClick('yes'));
     $('#no').click(() => handleBtnClick('no'));
-    
 });
 
 function onInit() {
@@ -79,9 +78,8 @@ function toggleLoaderInBtn(btnSelector, showLoader) {
   }
 }
 
-//TODO please change these methods to post
 function callModalActionApi(path, userDetails) {
-    return $.get(`/minder/${path}?appUserId=${userId}&userId=${userDetails.userId}`);
+    return $.post(`/minder/${path}?appUserId=${userId}&userId=${userDetails.userId}`);
 }
 
 function getNextUser() {

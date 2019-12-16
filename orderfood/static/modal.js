@@ -79,7 +79,7 @@ function toggleLoaderInBtn(btnSelector, showLoader) {
 }
 
 function callModalActionApi(path, userDetails) {
-    return $.get(`/minder/${path}?appUserId=${userId}&userId=${userDetails.userId}`);
+    return $.post(`/minder/${path}?appUserId=${userId}&userId=${userDetails.userId}`);
 }
 
 function getNextUser() {
