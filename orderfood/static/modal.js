@@ -1,12 +1,12 @@
 let currentUserProfile;
 
 $(document).ready(function() {
-    onInit();
-    $('#yes').click(() => handleBtnClick('yes'));
-    $('#no').click(() => handleBtnClick('no'));
     $('#save-interest-btn').click(() => saveInterest({
       userId: userId, interest: $('input[name="interest"]:checked').val()
     }));
+    onInit();
+    $('#yes').click(() => handleBtnClick('yes'));
+    $('#no').click(() => handleBtnClick('no'));
 });
 
 function onInit() {
